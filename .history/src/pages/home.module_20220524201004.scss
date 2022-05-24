@@ -1,0 +1,21 @@
+.container {
+    width: 100vw;
+    padding: 2rem;
+    color: var(--body);
+}
+
+.posts {
+    color: var(--body);
+
+    ul{
+        list-style: none;
+        display: flex;
+
+
+
+    }
+
+    .post {
+        color: var(--body);
+    }
+}

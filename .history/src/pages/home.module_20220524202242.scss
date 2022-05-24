@@ -1,0 +1,26 @@
+.container {
+    width: 100vw;
+    padding: 2rem;
+    color: var(--body);
+}
+
+.posts {
+    margin: 4rem 0 0 0;
+    color: var(--body);
+
+    a {
+        display: block;
+    }
+
+    ul{
+        list-style: none;
+        display: flex;
+
+
+
+    }
+
+    .post {
+        color: var(--body);
+    }
+}

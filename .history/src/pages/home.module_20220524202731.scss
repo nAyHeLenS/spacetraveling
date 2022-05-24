@@ -1,0 +1,24 @@
+.posts {
+    margin: 4rem 0 0 0;
+    color: var(--body);
+
+    a {
+        display: block;
+    }
+
+    a + a {
+        margin-top: 4rem;
+    }
+
+    .post {
+        h1 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: var(--heading);
+        }
+
+        p {
+            margin: 0.6rem;
+        }
+    }
+}

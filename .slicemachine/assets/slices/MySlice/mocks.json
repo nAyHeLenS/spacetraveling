@@ -1,0 +1,22 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "my_slice",
+    "items": [
+      {
+        "content": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "content": {
+          "link_type": "Web",
+          "url": "http://google.com"
+        }
+      }
+    ],
+    "primary": {}
+  }
+]

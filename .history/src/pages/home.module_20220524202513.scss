@@ -1,0 +1,18 @@
+
+
+.posts {
+    margin: 4rem 0 0 0;
+    color: var(--body);
+
+    a {
+        display: block;
+    }
+
+    a + a {
+        margin-top: 4rem;
+    }
+
+    .post {
+        color: var(--body);
+    }
+}

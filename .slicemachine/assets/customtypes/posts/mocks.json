@@ -1,0 +1,41 @@
+{
+  "id": "e4735e11-d4b5-4164-b9db-e1e12c2d7af2",
+  "uid": "cum-sapiente-dolor",
+  "type": "posts",
+  "data": {
+    "title": "incubate strategic infrastructures",
+    "subtitle": "orchestrate bricks-and-clicks partnerships",
+    "author": "generate vertical solutions",
+    "banner": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89?w=900&h=500&fit=crop"
+    },
+    "content": [
+      {
+        "heading": "e-enable seamless systems",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Velit mollit enim officia nisi occaecat incididunt sint est.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "heading": "leverage sexy web services",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Exercitation duis deserunt pariatur consectetur incididunt do nulla pariatur laboris eiusmod labore aute qui sint cupidatat. Officia velit id reprehenderit consequat.",
+            "spans": []
+          }
+        ]
+      }
+    ]
+  }
+}
