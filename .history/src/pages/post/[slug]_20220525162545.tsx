@@ -91,18 +91,17 @@ export const getStaticPaths = async () => {
    // nesse método usar o getByType
    
      const posts = await prismic.getByType('document.type.posts')
-     console.log(posts)
 
      const paths = posts.results.map(post => {
        return {
          params: {
-           slug: post.uid
+           
          }
        }
      })
  
     return {
-      paths,
+      paths: posts,
       fallback: true
     }
 };

@@ -1,6 +1,5 @@
 import { PrismicRichText } from '@prismicio/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Prismic, { predicate } from '@prismicio/client'
 import { RichText } from 'prismic-dom';
 import { FiCalendar, FiUser } from 'react-icons/fi';
 import Header from '../../components/Header';
@@ -41,13 +40,14 @@ export default function Post( { post }: PostProps): JSX.Element {
     <>
       <Header />
       <img
-       src={post.data.banner.url}
+       src='https://blog.4linux.com.br/wp-content/uploads/2018/04/Os-estudiosos-consideram-o-DevOps-como-um-termo-em-evolu%C3%A7%C3%A3o-e-que-n%C3%A3o-deve-ser-limitado.-e1523467724436.png'
        className={styles.banner} />
       
       <main className={commonStyles.container}>
         <div className={styles.post}>
           <section className={styles.postContent}>
-            <h1> {post.data.title} </h1>
+            <h2> O que é DevOps ? </h2>
+            <p> Entenda o que faz o profissional e o que é preciso para se destacar na carreira. </p>
             <ul>
               <li>
                 <FiCalendar />
@@ -55,7 +55,7 @@ export default function Post( { post }: PostProps): JSX.Element {
               </li>
               <li>
                 <FiUser />
-                {post.data.author}
+                Digital House
               </li>
               <li>
                 <FiUser />
@@ -65,7 +65,7 @@ export default function Post( { post }: PostProps): JSX.Element {
           </section>
 
           {
-            post.data.content.map( (content) => {
+            post.data.content.map( content => {
               return (
                 <article key={content.heading}>
                   <h2> {content.heading} </h2> 
@@ -86,23 +86,18 @@ export default function Post( { post }: PostProps): JSX.Element {
 
 
 export const getStaticPaths = async () => {
-   const prismic = getPrismicClient({});
+    // const prismic = getPrismicClient({});
 
-   // nesse método usar o getByType
+    // nesse método usar o getByType
    
-     const posts = await prismic.getByType('document.type.posts')
-     console.log(posts)
-
-     const paths = posts.results.map(post => {
-       return {
-         params: {
-           slug: post.uid
-         }
-       }
-     })
+  /**
+     const posts = await prismic.getByType('post', {
+      page: 1
+    });
  
+  */
     return {
-      paths,
+      paths: [],
       fallback: true
     }
 };
@@ -147,8 +142,3 @@ export const getStaticProps: GetStaticProps = async context => {
 };  
 
 
-/**
- const posts = await prismic.getByType('post', {
-    page: 1
- });
-*/

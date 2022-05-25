@@ -1,6 +1,6 @@
 import { PrismicRichText } from '@prismicio/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Prismic, { predicate } from '@prismicio/client'
+import Prismic from '@prismicio/client'
 import { RichText } from 'prismic-dom';
 import { FiCalendar, FiUser } from 'react-icons/fi';
 import Header from '../../components/Header';
@@ -90,19 +90,12 @@ export const getStaticPaths = async () => {
 
    // nesse método usar o getByType
    
-     const posts = await prismic.getByType('document.type.posts')
-     console.log(posts)
-
-     const paths = posts.results.map(post => {
-       return {
-         params: {
-           slug: post.uid
-         }
-       }
+     const posts = await prismic.query<any>({
+       Prismic.Predicate.at
      })
  
     return {
-      paths,
+      paths: posts,
       fallback: true
     }
 };
