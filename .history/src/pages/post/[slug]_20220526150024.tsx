@@ -6,8 +6,6 @@ import { FiCalendar, FiUser } from 'react-icons/fi';
 import Header from '../../components/Header';
 import Head from 'next/head';
 
-import { format } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR/index.js';
 
 import { getPrismicClient } from '../../services/prismic';
 
@@ -47,14 +45,6 @@ export default function Post( { post }: PostProps): JSX.Element {
     return <h1> carregando... </h1>    
   }
 
-  const formatedDate = format(
-    new Date(post.first_publication_date),
-    'dd MMM yyyy',
-    {
-      locale: ptBR
-    }
-  )
-
   console.log(post)
   return (
     <>
@@ -73,7 +63,7 @@ export default function Post( { post }: PostProps): JSX.Element {
                 <ul>
                   <li>
                     <FiCalendar />
-                    {formatedDate}
+                    24 My 2022
                   </li>
                   <li>
                     <FiUser />

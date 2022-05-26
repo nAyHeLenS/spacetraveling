@@ -39,7 +39,10 @@ interface PostProps {
 }
 
 export default function Post( { post }: PostProps): JSX.Element {
-//  const content = post.data.content.reduce
+   const readTime = post.data.content.reduce( (total, contentTotal) => {
+     let re = new RegExp('/\/')
+     console.log(re)
+})
 //  buscar a quantidade de palavras de cada seção heading e body
   const router = useRouter()
 
@@ -73,7 +76,7 @@ export default function Post( { post }: PostProps): JSX.Element {
                 <ul>
                   <li>
                     <FiCalendar />
-                    {formatedDate}
+                    {post.first_publication_date}
                   </li>
                   <li>
                     <FiUser />

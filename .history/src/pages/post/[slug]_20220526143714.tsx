@@ -4,10 +4,6 @@ import Prismic, { predicate } from '@prismicio/client'
 import { RichText } from 'prismic-dom';
 import { FiCalendar, FiUser } from 'react-icons/fi';
 import Header from '../../components/Header';
-import Head from 'next/head';
-
-import { format } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR/index.js';
 
 import { getPrismicClient } from '../../services/prismic';
 
@@ -43,24 +39,9 @@ export default function Post( { post }: PostProps): JSX.Element {
 //  buscar a quantidade de palavras de cada seção heading e body
   const router = useRouter()
 
-  if(router.isFallback){
-    return <h1> carregando... </h1>    
-  }
-
-  const formatedDate = format(
-    new Date(post.first_publication_date),
-    'dd MMM yyyy',
-    {
-      locale: ptBR
-    }
-  )
-
   console.log(post)
   return (
     <>
-    <Head>
-      <title> {post.data.title} | spacetraveling </title>
-    </Head>
       <Header />
       <img
        src={post?.data.banner.url}
@@ -73,7 +54,7 @@ export default function Post( { post }: PostProps): JSX.Element {
                 <ul>
                   <li>
                     <FiCalendar />
-                    {formatedDate}
+                    24 My 2022
                   </li>
                   <li>
                     <FiUser />

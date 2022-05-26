@@ -47,13 +47,7 @@ export default function Post( { post }: PostProps): JSX.Element {
     return <h1> carregando... </h1>    
   }
 
-  const formatedDate = format(
-    new Date(post.first_publication_date),
-    'dd MMM yyyy',
-    {
-      locale: ptBR
-    }
-  )
+  const formatedDate = format()
 
   console.log(post)
   return (
@@ -73,7 +67,7 @@ export default function Post( { post }: PostProps): JSX.Element {
                 <ul>
                   <li>
                     <FiCalendar />
-                    {formatedDate}
+                    24 My 2022
                   </li>
                   <li>
                     <FiUser />

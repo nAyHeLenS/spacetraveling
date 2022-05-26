@@ -73,7 +73,7 @@ export default function Post( { post }: PostProps): JSX.Element {
                 <ul>
                   <li>
                     <FiCalendar />
-                    {formatedDate}
+                    24 My 2022
                   </li>
                   <li>
                     <FiUser />
