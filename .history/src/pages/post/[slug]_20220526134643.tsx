@@ -107,7 +107,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async context => {
-
+// export const getStacticProps; GetStaticProps = async context =>{} 
   const prismic = getPrismicClient({});
 
   const { slug } = context.params
@@ -145,3 +145,93 @@ export const getStaticProps: GetStaticProps = async context => {
 
   
 };  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+
+*/
+
+/**
+  <main className={commonStyles.container}>
+        <div className={styles.post}>
+          <section className={styles.postContent}>
+            <h1> {post.data.title} </h1>
+            <ul>
+              <li>
+                <FiCalendar />
+                24 My 2022
+              </li>
+              <li>
+                <FiUser />
+                {post.data.author}
+              </li>
+              <li>
+                <FiUser />
+                10 min
+              </li>
+            </ul>
+          </section>
+
+          {
+            post?.data.content.map( (content) => {
+              return (
+                <article key={content?.heading}>
+                  <h2> {content?.heading} </h2> 
+                  <div className={styles.postContainer}
+                   dangerouslySetInnerHTML={{ __html: RichText.asHtml(content.body),}}
+                  />
+                </article>
+              )
+            })
+          }
+
+        </div>
+     </main>
+
+*/
+
+/**
+  const response = await prismic.getByUID('uid', String(slug), {});
+  //const response = await prismic.getByUID('post', String(slug), {});
+
+  // console.log(response)
+    
+  const post = {
+    uid: response.uid,
+    first_publication_date: response.first_publication_date,
+    data: {
+      title: response.data.title,
+      subtitle: response.data.subtitle,
+      author: response.data.author,
+      banner: {
+        url: response.data.banner.url
+      },
+      content: response.data.content.map((content: { heading: any; body: any; }) => {
+        return {
+          heading: content.heading,
+          body: [...content.body]
+        }
+      })
+    },
+  }
+
+  return {
+    props: {
+      post, 
+    },
+    revalidate: 5
+  }
+*/
+

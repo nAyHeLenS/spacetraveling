@@ -43,54 +43,55 @@ export default function Post( { post }: PostProps): JSX.Element {
       <img
        src={post?.data.banner.url}
        className={styles.banner} />
-
-      <main className={commonStyles.container}>
-            <div className={styles.post}>
-              <section className={styles.postContent}>
-                <h1> {post?.data.title} </h1>
-                <ul>
-                  <li>
-                    <FiCalendar />
-                    24 My 2022
-                  </li>
-                  <li>
-                    <FiUser />
-                    {post?.data.author}
-                  </li>
-                  <li>
-                    <FiUser />
-                    10 min
-                  </li>
-                </ul>
-              </section>
-
-              {
-                post?.data.content.map( (content) => {
-                  return (
-                    <article key={content?.heading}>
-                      <h2> {content?.heading} </h2> 
-                      <div className={styles.postContainer}
-                      dangerouslySetInnerHTML={{ __html: RichText.asHtml(content.body),}}
-                      />
-                    </article>
-                  )
-                })
-              }
-
-            </div>
-        </main>
       
-     
+      <main className={commonStyles.container}>
+        <div className={styles.post}>
+          <section className={styles.postContent}>
+            <h1> {post.data.title} </h1>
+            <ul>
+              <li>
+                <FiCalendar />
+                24 My 2022
+              </li>
+              <li>
+                <FiUser />
+                {post.data.author}
+              </li>
+              <li>
+                <FiUser />
+                10 min
+              </li>
+            </ul>
+          </section>
+
+          {
+            post?.data.content.map( (content) => {
+              return (
+                <article key={content?.heading}>
+                  <h2> {content?.heading} </h2> 
+                  <div className={styles.postContainer}
+                   dangerouslySetInnerHTML={{ __html: RichText.asHtml(content.body),}}
+                  />
+                </article>
+              )
+            })
+          }
+
+        </div>
+     </main>
+
     </>
   )
 }
 
 
 export const getStaticPaths = async () => {
-     const prismic = getPrismicClient({});
+   const prismic = getPrismicClient({});
 
+   // nesse método usar o getByType
+   
      const posts = await prismic.getByType('document.type.posts')
-
+     console.log(posts)
 
      const paths = posts.results.map(post => {
        return {
@@ -107,15 +108,19 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async context => {
-
   const prismic = getPrismicClient({});
 
   const { slug } = context.params
 
-  // posts | uid
-   const response = await prismic.getByUID('posts', String(slug), {});
+ 
+  // obrigatório usar getByUID
 
-   const post = {
+
+  
+  const response = await prismic.getByUID('post', String(slug), {});
+  // console.log(response)
+    
+  const post = {
     uid: response.uid,
     first_publication_date: response.first_publication_date,
     data: {
@@ -125,7 +130,7 @@ export const getStaticProps: GetStaticProps = async context => {
       banner: {
         url: response.data.banner.url
       },
-      content: response.data.content.map((content: { heading: any; body: any; }) => {
+      content: response?.data.content.map((content: { heading: any; body: any; }) => {
         return {
           heading: content.heading,
           body: [...content.body]
@@ -134,14 +139,19 @@ export const getStaticProps: GetStaticProps = async context => {
     },
   }
 
-  // const notFound = response[0] ? false : true
+  console.log(post)
 
   return {
     props: {
       post, 
     }
-    // notFound
   }
-
   
 };  
+
+
+/**
+ const posts = await prismic.getByType('post', {
+    page: 1
+ });
+*/

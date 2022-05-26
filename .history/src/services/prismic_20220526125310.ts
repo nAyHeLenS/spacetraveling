@@ -25,7 +25,6 @@ export function linkResolver(doc){
 
 export function getPrismicClient(config: PrismicConfig): prismic.Client {
   const client = prismic.createClient(endpoint, {
-    ...config,
     accessToken: process.env.PRISMIC_ACCESS_TOKEN
   });
 
